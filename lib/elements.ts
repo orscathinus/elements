@@ -1,0 +1,186 @@
+export type ElementStatus = "active" | "locked";
+
+export type ElementRecord = {
+  number: number;
+  symbol: string;
+  name: string;
+  mass: string;
+  period: number;
+  group: number;
+  tableRow: number;
+  tableColumn: number;
+  series?: "lanthanide" | "actinide";
+  status: ElementStatus;
+  slug: string;
+};
+
+type ElementSeed = Omit<ElementRecord, "status" | "slug">;
+
+const main = (
+  number: number,
+  symbol: string,
+  name: string,
+  mass: string,
+  period: number,
+  group: number,
+): ElementSeed => ({
+  number,
+  symbol,
+  name,
+  mass,
+  period,
+  group,
+  tableRow: period,
+  tableColumn: group,
+});
+
+const fBlock = (
+  number: number,
+  symbol: string,
+  name: string,
+  mass: string,
+  series: "lanthanide" | "actinide",
+  offset: number,
+): ElementSeed => ({
+  number,
+  symbol,
+  name,
+  mass,
+  period: series === "lanthanide" ? 6 : 7,
+  group: 3,
+  tableRow: series === "lanthanide" ? 9 : 10,
+  tableColumn: offset + 3,
+  series,
+});
+
+const seeds: ElementSeed[] = [
+  main(1, "H", "Hydrogen", "1.008", 1, 1),
+  main(2, "He", "Helium", "4.0026", 1, 18),
+  main(3, "Li", "Lithium", "6.94", 2, 1),
+  main(4, "Be", "Beryllium", "9.0122", 2, 2),
+  main(5, "B", "Boron", "10.81", 2, 13),
+  main(6, "C", "Carbon", "12.011", 2, 14),
+  main(7, "N", "Nitrogen", "14.007", 2, 15),
+  main(8, "O", "Oxygen", "15.999", 2, 16),
+  main(9, "F", "Fluorine", "18.998", 2, 17),
+  main(10, "Ne", "Neon", "20.180", 2, 18),
+  main(11, "Na", "Sodium", "22.990", 3, 1),
+  main(12, "Mg", "Magnesium", "24.305", 3, 2),
+  main(13, "Al", "Aluminium", "26.982", 3, 13),
+  main(14, "Si", "Silicon", "28.085", 3, 14),
+  main(15, "P", "Phosphorus", "30.974", 3, 15),
+  main(16, "S", "Sulfur", "32.06", 3, 16),
+  main(17, "Cl", "Chlorine", "35.45", 3, 17),
+  main(18, "Ar", "Argon", "39.948", 3, 18),
+  main(19, "K", "Potassium", "39.098", 4, 1),
+  main(20, "Ca", "Calcium", "40.078", 4, 2),
+  main(21, "Sc", "Scandium", "44.956", 4, 3),
+  main(22, "Ti", "Titanium", "47.867", 4, 4),
+  main(23, "V", "Vanadium", "50.942", 4, 5),
+  main(24, "Cr", "Chromium", "51.996", 4, 6),
+  main(25, "Mn", "Manganese", "54.938", 4, 7),
+  main(26, "Fe", "Iron", "55.845", 4, 8),
+  main(27, "Co", "Cobalt", "58.933", 4, 9),
+  main(28, "Ni", "Nickel", "58.693", 4, 10),
+  main(29, "Cu", "Copper", "63.546", 4, 11),
+  main(30, "Zn", "Zinc", "65.38", 4, 12),
+  main(31, "Ga", "Gallium", "69.723", 4, 13),
+  main(32, "Ge", "Germanium", "72.630", 4, 14),
+  main(33, "As", "Arsenic", "74.922", 4, 15),
+  main(34, "Se", "Selenium", "78.971", 4, 16),
+  main(35, "Br", "Bromine", "79.904", 4, 17),
+  main(36, "Kr", "Krypton", "83.798", 4, 18),
+  main(37, "Rb", "Rubidium", "85.468", 5, 1),
+  main(38, "Sr", "Strontium", "87.62", 5, 2),
+  main(39, "Y", "Yttrium", "88.906", 5, 3),
+  main(40, "Zr", "Zirconium", "91.224", 5, 4),
+  main(41, "Nb", "Niobium", "92.906", 5, 5),
+  main(42, "Mo", "Molybdenum", "95.95", 5, 6),
+  main(43, "Tc", "Technetium", "[98]", 5, 7),
+  main(44, "Ru", "Ruthenium", "101.07", 5, 8),
+  main(45, "Rh", "Rhodium", "102.91", 5, 9),
+  main(46, "Pd", "Palladium", "106.42", 5, 10),
+  main(47, "Ag", "Silver", "107.87", 5, 11),
+  main(48, "Cd", "Cadmium", "112.41", 5, 12),
+  main(49, "In", "Indium", "114.82", 5, 13),
+  main(50, "Sn", "Tin", "118.71", 5, 14),
+  main(51, "Sb", "Antimony", "121.76", 5, 15),
+  main(52, "Te", "Tellurium", "127.60", 5, 16),
+  main(53, "I", "Iodine", "126.90", 5, 17),
+  main(54, "Xe", "Xenon", "131.29", 5, 18),
+  main(55, "Cs", "Caesium", "132.91", 6, 1),
+  main(56, "Ba", "Barium", "137.33", 6, 2),
+  main(72, "Hf", "Hafnium", "178.49", 6, 4),
+  main(73, "Ta", "Tantalum", "180.95", 6, 5),
+  main(74, "W", "Tungsten", "183.84", 6, 6),
+  main(75, "Re", "Rhenium", "186.21", 6, 7),
+  main(76, "Os", "Osmium", "190.23", 6, 8),
+  main(77, "Ir", "Iridium", "192.22", 6, 9),
+  main(78, "Pt", "Platinum", "195.08", 6, 10),
+  main(79, "Au", "Gold", "196.97", 6, 11),
+  main(80, "Hg", "Mercury", "200.59", 6, 12),
+  main(81, "Tl", "Thallium", "204.38", 6, 13),
+  main(82, "Pb", "Lead", "207.2", 6, 14),
+  main(83, "Bi", "Bismuth", "208.98", 6, 15),
+  main(84, "Po", "Polonium", "[209]", 6, 16),
+  main(85, "At", "Astatine", "[210]", 6, 17),
+  main(86, "Rn", "Radon", "[222]", 6, 18),
+  main(87, "Fr", "Francium", "[223]", 7, 1),
+  main(88, "Ra", "Radium", "[226]", 7, 2),
+  main(104, "Rf", "Rutherfordium", "[267]", 7, 4),
+  main(105, "Db", "Dubnium", "[268]", 7, 5),
+  main(106, "Sg", "Seaborgium", "[269]", 7, 6),
+  main(107, "Bh", "Bohrium", "[270]", 7, 7),
+  main(108, "Hs", "Hassium", "[269]", 7, 8),
+  main(109, "Mt", "Meitnerium", "[277]", 7, 9),
+  main(110, "Ds", "Darmstadtium", "[281]", 7, 10),
+  main(111, "Rg", "Roentgenium", "[282]", 7, 11),
+  main(112, "Cn", "Copernicium", "[285]", 7, 12),
+  main(113, "Nh", "Nihonium", "[286]", 7, 13),
+  main(114, "Fl", "Flerovium", "[290]", 7, 14),
+  main(115, "Mc", "Moscovium", "[290]", 7, 15),
+  main(116, "Lv", "Livermorium", "[293]", 7, 16),
+  main(117, "Ts", "Tennessine", "[294]", 7, 17),
+  main(118, "Og", "Oganesson", "[294]", 7, 18),
+  fBlock(57, "La", "Lanthanum", "138.91", "lanthanide", 0),
+  fBlock(58, "Ce", "Cerium", "140.12", "lanthanide", 1),
+  fBlock(59, "Pr", "Praseodymium", "140.91", "lanthanide", 2),
+  fBlock(60, "Nd", "Neodymium", "144.24", "lanthanide", 3),
+  fBlock(61, "Pm", "Promethium", "[145]", "lanthanide", 4),
+  fBlock(62, "Sm", "Samarium", "150.36", "lanthanide", 5),
+  fBlock(63, "Eu", "Europium", "151.96", "lanthanide", 6),
+  fBlock(64, "Gd", "Gadolinium", "157.25", "lanthanide", 7),
+  fBlock(65, "Tb", "Terbium", "158.93", "lanthanide", 8),
+  fBlock(66, "Dy", "Dysprosium", "162.50", "lanthanide", 9),
+  fBlock(67, "Ho", "Holmium", "164.93", "lanthanide", 10),
+  fBlock(68, "Er", "Erbium", "167.26", "lanthanide", 11),
+  fBlock(69, "Tm", "Thulium", "168.93", "lanthanide", 12),
+  fBlock(70, "Yb", "Ytterbium", "173.05", "lanthanide", 13),
+  fBlock(71, "Lu", "Lutetium", "174.97", "lanthanide", 14),
+  fBlock(89, "Ac", "Actinium", "[227]", "actinide", 0),
+  fBlock(90, "Th", "Thorium", "232.04", "actinide", 1),
+  fBlock(91, "Pa", "Protactinium", "231.04", "actinide", 2),
+  fBlock(92, "U", "Uranium", "238.03", "actinide", 3),
+  fBlock(93, "Np", "Neptunium", "[237]", "actinide", 4),
+  fBlock(94, "Pu", "Plutonium", "[244]", "actinide", 5),
+  fBlock(95, "Am", "Americium", "[243]", "actinide", 6),
+  fBlock(96, "Cm", "Curium", "[247]", "actinide", 7),
+  fBlock(97, "Bk", "Berkelium", "[247]", "actinide", 8),
+  fBlock(98, "Cf", "Californium", "[251]", "actinide", 9),
+  fBlock(99, "Es", "Einsteinium", "[252]", "actinide", 10),
+  fBlock(100, "Fm", "Fermium", "[257]", "actinide", 11),
+  fBlock(101, "Md", "Mendelevium", "[258]", "actinide", 12),
+  fBlock(102, "No", "Nobelium", "[259]", "actinide", 13),
+  fBlock(103, "Lr", "Lawrencium", "[266]", "actinide", 14),
+];
+
+export const elements: ElementRecord[] = seeds
+  .map((element) => ({
+    ...element,
+    status: element.number === 1 ? ("active" as const) : ("locked" as const),
+    slug: element.name.toLowerCase(),
+  }))
+  .sort((a, b) => a.number - b.number);
+
+export const hydrogen = elements[0];
+
