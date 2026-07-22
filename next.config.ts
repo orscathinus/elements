@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         images: {
           unoptimized: true,
         },
+        // The Pages build does not execute the Cloudflare-only database and
+        // worker helpers. Their virtual runtime types are supplied by vinext
+        // during the separate Sites build, not by native Next.js.
+        typescript: {
+          ignoreBuildErrors: true,
+        },
       }
     : {}),
 };
