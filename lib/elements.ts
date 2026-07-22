@@ -177,10 +177,10 @@ const seeds: ElementSeed[] = [
 export const elements: ElementRecord[] = seeds
   .map((element) => ({
     ...element,
-    status: element.number === 1 ? ("active" as const) : ("locked" as const),
+    status: element.number <= 2 ? ("active" as const) : ("locked" as const),
     slug: element.name.toLowerCase(),
   }))
   .sort((a, b) => a.number - b.number);
 
 export const hydrogen = elements[0];
-
+export const helium = elements[1];

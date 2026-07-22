@@ -37,22 +37,41 @@ export default function Home() {
       </section>
 
       <section className="opening-note page-width">
-        <div className="section-index">01 / 118</div>
+        <div className="section-index">02 / 118</div>
         <div>
           <p className="eyebrow cyan">An atlas built element by element</p>
-          <h2>One square is bright.<br />Its story is vast.</h2>
+          <h2>Two squares are bright.<br />Their stories diverge.</h2>
         </div>
         <div className="opening-copy">
           <p>
             Hydrogen is not merely the first entry in a catalog. It is the raw material from which stars formed, the reference point for atomic theory, and a quiet participant in water, food, fuel, and every living cell.
           </p>
           <p>
-            This first edition gives Hydrogen room to breathe across a collection of connected chapters. The other elements remain visible but locked, preserving the shape of the larger atlas as it grows.
+            Its original six-chapter edition remains complete. Now Helium joins it with a separate visual world: sunlight and spectra, stellar ashes, quantum liquids, deep cold, and technologies that depend on an element almost unwilling to react.
           </p>
           <Link className="text-link" href="/hydrogen">Begin the first chapter <span>↗</span></Link>
+        </div>
+      </section>
+
+      <section className="helium-home-feature">
+        <div className="page-width helium-home-inner">
+          <div className="helium-feature-copy">
+            <p className="eyebrow helium-kicker">Element 002 · New edition</p>
+            <h2>Found in<br />the light.</h2>
+            <p>
+              Helium was recognized in the Sun before it was isolated on Earth. Enter a prismatic six-chapter atlas of noble-gas chemistry, stellar fusion, superfluid matter, scientific discovery, and irreplaceable cold.
+            </p>
+            <Link className="helium-button" href="/helium"><span>Explore</span><i>He</i><b>→</b></Link>
+          </div>
+          <Link className="helium-feature-tile" href="/helium" aria-label="Open the Helium atlas">
+            <span>2</span>
+            <strong>He</strong>
+            <small>4.0026</small>
+            <em>Helium</em>
+          </Link>
+          <div className="helium-spectrum-stripe" aria-hidden="true"><i /><i /><i /><i /><i /></div>
         </div>
       </section>
     </main>
   );
 }
-

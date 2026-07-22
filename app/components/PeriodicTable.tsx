@@ -30,7 +30,7 @@ export function PeriodicTable({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <div className="table-tools">
           <div>
-            <p className="eyebrow">118 positions · 1 illuminated</p>
+            <p className="eyebrow">118 positions · 2 illuminated</p>
             <h2>The periodic table, waiting to be explored.</h2>
           </div>
           <label className="element-search">
@@ -76,10 +76,10 @@ export function PeriodicTable({ compact = false }: { compact?: boolean }) {
               return (
                 <Link
                   key={element.number}
-                  href="/hydrogen"
+                  href={`/${element.slug}`}
                   style={style}
-                  className={`element-card active-element ${visibleMatch ? "" : "filtered"}`}
-                  aria-label="Hydrogen, element 1. Open the Hydrogen atlas."
+                  className={`element-card active-element active-${element.slug} ${visibleMatch ? "" : "filtered"}`}
+                  aria-label={`${element.name}, element ${element.number}. Open the ${element.name} atlas.`}
                 >
                   {card}
                 </Link>
@@ -123,7 +123,7 @@ export function PeriodicTable({ compact = false }: { compact?: boolean }) {
             </div>
             <h3 id="locked-title">{selected.name} is still in the dark.</h3>
             <p>
-              Its position is mapped and ready. When this element is added, the tile will ignite and open into its own multi-page atlas—without changing the table around it.
+              Its position is mapped and ready. When this element is added, the tile will ignite and open into its own multi-page atlas—without changing Hydrogen, Helium, or the table around it.
             </p>
             <button className="text-button" type="button" onClick={() => setSelected(null)}>Return to the table →</button>
           </div>
@@ -132,4 +132,3 @@ export function PeriodicTable({ compact = false }: { compact?: boolean }) {
     </div>
   );
 }
-

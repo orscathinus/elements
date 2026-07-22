@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "The Hydrogen Atlas",
-    template: "%s · The Hydrogen Atlas",
+    default: "The Element Atlas",
+    template: "%s · The Element Atlas",
   },
   description:
-    "An interactive periodic table and a cinematic, deeply researched atlas of Hydrogen—the first element.",
+    "An interactive periodic table and a cinematic, deeply researched atlas built one element at a time—now featuring Hydrogen and Helium.",
   other: {
     "codex-preview": "development",
   },

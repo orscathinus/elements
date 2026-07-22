@@ -7,9 +7,7 @@ import { useState } from "react";
 const links = [
   ["Table", "/#periodic-table"],
   ["Hydrogen", "/hydrogen"],
-  ["Origins", "/hydrogen/origins"],
-  ["Discovery", "/hydrogen/discovery"],
-  ["Uses", "/hydrogen/uses"],
+  ["Helium", "/helium"],
 ];
 
 export function SiteHeader() {
@@ -18,9 +16,9 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <Link className="atlas-mark" href="/" aria-label="The Hydrogen Atlas home">
+      <Link className="atlas-mark" href="/" aria-label="The Element Atlas home">
         <span className="atlas-dot" />
-        The Hydrogen Atlas
+        The Element Atlas
       </Link>
       <button
         className="nav-toggle"
@@ -36,7 +34,7 @@ export function SiteHeader() {
       </button>
       <nav id="site-navigation" className={open ? "site-nav is-open" : "site-nav"}>
         {links.map(([label, href], index) => {
-          const active = href !== "/#periodic-table" && pathname === href;
+          const active = href !== "/#periodic-table" && pathname.startsWith(href);
           return (
             <span className="nav-item" key={href}>
               {index > 0 && <span className="nav-star">•</span>}
@@ -54,4 +52,3 @@ export function SiteHeader() {
     </header>
   );
 }
-
